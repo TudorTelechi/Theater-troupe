@@ -1,0 +1,38 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  
+  <xs:element name="factura">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="numar" type="xs:string"/>
+        <xs:element name="data" type="xs:string"/>
+        <xs:element name="client">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="nume" type="xs:string"/>
+              <xs:element name="adresa" type="xs:string"/>
+              <xs:element name="oras" type="xs:string"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="produse">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="produs" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="cod" type="xs:string"/>
+                    <xs:element name="denumire" type="xs:string"/>
+                    <xs:element name="pret" type="xs:decimal"/>
+                    <xs:element name="cantitate" type="xs:integer"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="total" type="xs:decimal"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  
+</xs:schema>

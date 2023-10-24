@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ro">
+  <head>
+    <title>Validarea formularelor cu JavaScript</title>
+    <script src="validare.js" type="text/javascript"></script>
+    <script type="text/javascript">
+      function validezaForma() {
+        var frm = document.formaInscriere;
+        var valid = true;
+        if (frm.nume.value.length < 2) {
+          alert("Numele trebuie sa aiba minim 2 caractere");
+          frm.nume.focus();
+          valid = false;
+        } else if (frm.nume.value.length > 20) {
+          alert("Numele trebuie sa aiba maxim 20 caractere");
+          frm.nume.focus();
+          valid = false;
+        }
+        if (valid && !esteNumar(frm.telefon.value)) {
+          alert("Introduceti un telefon valid!");
+          frm.telefon.focus();
+          valid = false;
+        }
+        if (valid && !esteEmail(frm.email.value)) {
+          alert("Introduceti o adresa de mail valida!");
+          frm.email.focus();
+          valid = false;
+        }
+        if (valid && !esteData(frm.dataNasterii.value)) {
+          alert("Introduceti o data valida de forma zz/ll/aaaa!");
+          frm.dataNasterii.focus();
+          valid = false;
+        }
+        var parola = frm.parola.value;
+        var parolaVerif = frm.parolaVerif.value;
+
+        if (valid && parola.length < 5) {
+          alert("Parola trebuie sa aiba minim 5 caractere");
+          frm.parola.focus();
+          valid = false;
+        }
+        if (valid && parola != parolaVerif) {
+          alert("Parolele nu coincid");
+          frm.parola.focus();
+          valid = false;
+        }
+        return valid;
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Formular Inregistrare</h1>
+    <form name="formaInscriere" onsubmit="return validezaForma()">
+      <p>
+        Nume<sup>*</sup>: <input type="text" name="nume" value="" size="20" />
+      </p>
+      <p>
+        Telefon:
+        <input
+          type="text"
+          name="telefon"
+          onkeyup="limitareLungime(this, 10)"
+          onkeypress="return filtreazaNumere(event)"
+        />
+      </p>
+      <p>E-mail<sup>*</sup>: <input type="text" name="email" value="" /></p>
+      <p>Parola<sup>*</sup>: <input type="password" name="parola" /></p>
+      <p>
+        Reintroduceti Parola<sup>*</sup>:
+        <input type="password" name="parolaVerif" />
+      </p>
+      <p>
+        Data Nasterii:
+        <input
+          type="text"
+          id="dataNasterii"
+          name="dataNasterii"
+          value=""
+          size="10"
+        />
+        (<i>zz/ll/aaaa</i>)
+      </p>
+      <input type="submit" value="Trimite" />
+      <input type="reset" value="Reset" />
+    </form>
+  </body>
+</html>

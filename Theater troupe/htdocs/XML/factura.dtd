@@ -1,0 +1,19 @@
+<!DOCTYPE factura [
+  <!ELEMENT factura (numar, data, client, produse, total)>
+  <!ELEMENT numar (#PCDATA)>
+  <!ELEMENT data (#PCDATA)>
+  
+  <!ELEMENT client (nume, adresa, oras)>
+  <!ELEMENT nume (#PCDATA)>
+  <!ELEMENT adresa (#PCDATA)>
+  <!ELEMENT oras (#PCDATA)>
+  
+  <!ELEMENT produse (produs*)>
+  <!ELEMENT produs (cod, denumire, pret, cantitate)>
+  <!ELEMENT cod (#PCDATA)>
+  <!ELEMENT denumire (#PCDATA)>
+  <!ELEMENT pret (#PCDATA)>
+  <!ELEMENT cantitate (#PCDATA)>
+  
+  <!ELEMENT total (#PCDATA)>
+]>
